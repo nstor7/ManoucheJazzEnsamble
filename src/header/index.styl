@@ -1,0 +1,102 @@
+header
+  width 16vw
+  height 100vw
+  box-sizing: border-box
+  position: fixed
+  transition: all 0.3s linear
+  background: #292C30
+  color: #fff
+  @media(max-width: 800px)
+    height: 15vw
+  .logoContainer
+    width: 16vw
+    height 16vw
+    display flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    text-decoration: none
+    text-align: center
+    border-bottom: 1px solid #313539
+    @media(max-width: 800px)
+      width: 52vw
+    h3
+      font-size: 1vw
+      margin: 0
+      padding: 0
+      font-family: 'Griffy', cursive
+      color: #fff
+      @media(max-width: 800px)
+        font-size: 6vw
+    .luis
+      font-size: 3vw
+      line-height: 2.5vw
+nav
+  width: 16vw
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  @media(max-width: 800px)
+    position absolute
+    top 15vw
+    right: 0
+    width 100vw
+    transition ease 1s
+    height: 125vw
+    flex-wrap: wrap
+  a  
+    font-family: 'Julius Sans One', sans-serif
+    font-size 0.8vw
+    text-decoration none
+    text-transform: uppercase
+    color white
+    width: 16vw
+    text-align: center
+    height 3vw
+    line-height: 3vw
+    border-bottom: 1px solid #313539
+    @media(max-width: 800px)
+      font-size: 4.5vw
+      color rosado
+      width: 100vw
+      text-align: center
+      line-height: 25vw
+    &:hover
+      color: #AB8B65
+      border-right: 0.15vw solid #AB8B65
+.hidden
+  @media(max-width: 900px)
+    right -100vw
+.navButton
+  border-radius: 50%
+  background #444
+  font-size 2rem
+  color #eee !importan
+  height: 15vw
+  width: 15vw
+  line-height: 15vw
+  position: fixed
+  bottom: 1vw
+  right: 5vw
+  text-align: center
+  @media(min-width: 800px)
+    display none
+  .fa
+    font-size: 10vw
+  &:visited
+    color: #eee
+.social-container
+  height: 15vw
+  width: 11vw
+  display: flex
+  justify-content: space-between
+  margin: 1vw auto
+  .social
+    color: #52585E
+    font-size: 1vw
+    width: 2.2vw
+    height 2.2vw
+    line-height: 2.2vw
+    text-align: center
+    border-radius: 50%
+    background: #373B40

@@ -2724,11 +2724,83 @@ module.exports = [
 },{}],17:[function(require,module,exports){
 'use strict';
 
+var scrollFunction = function scrollFunction() {
+  var altura = window.innerWidth * 0.19;
+  var headerContainer = document.getElementById('headerContainer');
+  if (window.scrollY > altura) {
+    headerContainer.classList.add('blanco');
+  }if (window.scrollY < altura) {
+    headerContainer.classList.remove('blanco');
+  }
+};
+
+var noScrollFunction = function noScrollFunction(ctx, next) {
+  removeEventListener('scroll', scrollFunction);
+  var headerContainer = document.getElementById('headerContainer');
+  headerContainer.classList.add('blanco');
+  next();
+};
+var navegacion = function navegacion() {
+  var nav = document.getElementById('nav');
+  nav.classList.toggle('hidden');
+};
+
+module.exports = { scrollFunction: scrollFunction, noScrollFunction: noScrollFunction, navegacion: navegacion };
+
+},{}],18:[function(require,module,exports){
+'use strict';
+
+var _emptyElement = require('empty-element');
+
+var _emptyElement2 = _interopRequireDefault(_emptyElement);
+
+var _template = require('./template');
+
+var _template2 = _interopRequireDefault(_template);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+module.exports = function header(ctx, next) {
+  var container = document.getElementById('header-container');
+  (0, _emptyElement2.default)(container).appendChild(_template2.default);
+  next();
+};
+
+},{"./template":19,"empty-element":4}],19:[function(require,module,exports){
+'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['\n<header id= "headerContainer">\n <a href="/" class="logoContainer">\n  <hgroup>\n    <h3 class="luis">Luis David</h3>\n    <h3 class="manouche">Manouche Jazz Ensamble</h3>\n  </hgroup>\n </a>\n <nav id="nav" class="nav hidden">\n   <a href="/" onclick=', '>Inicio</a>\n   <a href="/danzas" onclick=', '>Danzas</a>\n   <a href="/vestuarios" onclick=', '>Vestuarios</a>\n   <a href="/tienda" onclick=', '>Productos y Servicios</a>\n   <a href="/contacto" onclick=', '>Contacto</a>\n </nav>\n <a href="#" class="navButton" onclick=', '>\n   <i class="fa fa-bars" aria-hidden="true"></i>\n </a>\n <aside class="social-container">\n   <a href="" class="social">\n    <i class="fab fa-youtube"></i>\n   </a>\n   <a href="" class="social">\n    <i class="fab fa-facebook-f"></i>\n   </a>\n   <a href="" class="social">\n    <i class="fab fa-instagram"></i>\n   </a>\n   <a href="" class="social">\n    <i class="far fa-envelope"></i>\n   </a>\n </aside>\n</header>'], ['\n<header id= "headerContainer">\n <a href="/" class="logoContainer">\n  <hgroup>\n    <h3 class="luis">Luis David</h3>\n    <h3 class="manouche">Manouche Jazz Ensamble</h3>\n  </hgroup>\n </a>\n <nav id="nav" class="nav hidden">\n   <a href="/" onclick=', '>Inicio</a>\n   <a href="/danzas" onclick=', '>Danzas</a>\n   <a href="/vestuarios" onclick=', '>Vestuarios</a>\n   <a href="/tienda" onclick=', '>Productos y Servicios</a>\n   <a href="/contacto" onclick=', '>Contacto</a>\n </nav>\n <a href="#" class="navButton" onclick=', '>\n   <i class="fa fa-bars" aria-hidden="true"></i>\n </a>\n <aside class="social-container">\n   <a href="" class="social">\n    <i class="fab fa-youtube"></i>\n   </a>\n   <a href="" class="social">\n    <i class="fab fa-facebook-f"></i>\n   </a>\n   <a href="" class="social">\n    <i class="fab fa-instagram"></i>\n   </a>\n   <a href="" class="social">\n    <i class="far fa-envelope"></i>\n   </a>\n </aside>\n</header>']);
+
+var _yoYo = require('yo-yo');
+
+var _yoYo2 = _interopRequireDefault(_yoYo);
+
+var _functions = require('./functions');
+
+var _functions2 = _interopRequireDefault(_functions);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
+}
+
+module.exports = (0, _yoYo2.default)(_templateObject, _functions2.default.navegacion, _functions2.default.navegacion, _functions2.default.navegacion, _functions2.default.navegacion, _functions2.default.navegacion, _functions2.default.navegacion);
+
+},{"./functions":17,"yo-yo":15}],20:[function(require,module,exports){
+'use strict';
+
 var _page = require('page');
 
 var _page2 = _interopRequireDefault(_page);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 (0, _page2.default)('*', function (ctx, next) {
   window.scrollTo(0, 0);
@@ -2738,7 +2810,7 @@ require('./inicio');
 
 (0, _page2.default)();
 
-},{"./inicio":18,"page":12}],18:[function(require,module,exports){
+},{"./inicio":21,"page":12}],21:[function(require,module,exports){
 'use strict';
 
 var _page = require('page');
@@ -2753,26 +2825,40 @@ var _template = require('./template');
 
 var _template2 = _interopRequireDefault(_template);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _header = require('../header');
 
-(0, _page2.default)('/', function (ctx, next) {
+var _header2 = _interopRequireDefault(_header);
+
+var _functions = require('../header/functions');
+
+var _functions2 = _interopRequireDefault(_functions);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+(0, _page2.default)('/', _header2.default, _functions2.default.noScrollFunction, function (ctx, next) {
   var main = document.getElementById('main-container');
   (0, _emptyElement2.default)(main).appendChild(_template2.default);
 });
 
-},{"./template":19,"empty-element":4,"page":12}],19:[function(require,module,exports){
+},{"../header":18,"../header/functions":17,"./template":22,"empty-element":4,"page":12}],22:[function(require,module,exports){
 'use strict';
 
-var _templateObject = _taggedTemplateLiteral(['\n <h1>hello world</h1>\n'], ['\n <h1>hello world</h1>\n']);
+var _templateObject = _taggedTemplateLiteral(['\n<main>\n <img class="completa" src="imagenes/luis-david-manouche-jazz-ensamble-inicio-portada.jpg" alt="Foto de portada de la P\xE1gina web del Luis David Manouche Jazz ensamble">\n <section>\n  <article class="dosTercios video-container">\n   <iframe src="https://www.youtube.com/embed/hQZmxkNyOtg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n  </article>\n  <article class="tercio">\n   <hgroup>\n    <h1>Luis David Manouche Jazz Ensamble</h1>\n    <h3>Qu\xE9 es?</h3>\n    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat voluptatem placeat aspernatur alias sit. Omnis, doloribus autem ea quasi, necessitatibus nam itaque fugit sequi pariatur sint distinctio, voluptatem culpa qui</p>\n    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad rem dicta laudantium doloremque ex dolores totam natus saepe labore animi praesentium officia error similique hic voluptas, enim quas sint tenetur.</p>\n    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt tenetur corporis molestiae doloremque repudiandae commodi, laboriosam voluptatibus labore deleniti facere unde molestias dolore quam expedita architecto ex quaerat culpa impedit.</p>\n   </hgroup>\n  </article>\n  <article class="completa">\n   <hgroup>\n    <h2>Que es el Manouche Jazz</h2>\n    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic inventore laudantium esse autem? Consequuntur ad alias rem officia sequi doloribus saepe. Tempora odit repellat magni debitis ut at iusto vero?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod incidunt nam, obcaecati harum ipsam rem autem sapiente veniam quidem optio non reiciendis dignissimos laboriosam nulla sequi, labore reprehenderit aliquam unde.</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad esse in doloremque voluptatem, aperiam ex, ut cupiditate, maiores ratione porro officia quae modi temporibus? Neque molestias doloremque quas sapiente. Omnis.</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis at error earum, tempora doloribus incidunt dolor ratione iure consequuntur neque reiciendis aliquid inventore cupiditate eius totam deserunt ut officia sit?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem amet voluptates corporis pariatur quae at repellat officia, corrupti porro assumenda voluptate dolor nam culpa eius ea? Nulla ducimus ipsam non?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam maxime sint modi voluptatum, labore iusto consequuntur amet veniam error iure eos nam assumenda vitae animi ipsum quos, possimus nesciunt quaerat?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia perferendis minima praesentium laborum accusantium rem voluptates velit exercitationem vitae officiis, corrupti itaque optio sed ad at hic temporibus qui ab?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, illo molestias mollitia voluptatem nam repudiandae sint vero quis autem voluptatibus culpa accusamus iusto corporis nesciunt temporibus odit! Quos, inventore animi.</p>\n   </hgroup>\n   \n  </article>\n  <article class="dosTercios video-container">\n   <iframe src="https://www.youtube.com/embed/hQZmxkNyOtg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n  </article>\n  <article class="tercio">\n   <hgroup>\n    <h1>Exponentes del Manouche Jazz</h1>\n    <h3>Nuestras Influencias</h3>\n    <ul>\n     <li>Bireli Lagrene</li>\n     <li>Stochelo Rosemberg</li>\n     <li>Juan Perico de los Palotes</li>\n     <li></li>\n     <li></li>\n    </ul>\n   </hgroup>\n  </article>\n </section>\n</main>\n'], ['\n<main>\n <img class="completa" src="imagenes/luis-david-manouche-jazz-ensamble-inicio-portada.jpg" alt="Foto de portada de la P\xE1gina web del Luis David Manouche Jazz ensamble">\n <section>\n  <article class="dosTercios video-container">\n   <iframe src="https://www.youtube.com/embed/hQZmxkNyOtg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n  </article>\n  <article class="tercio">\n   <hgroup>\n    <h1>Luis David Manouche Jazz Ensamble</h1>\n    <h3>Qu\xE9 es?</h3>\n    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat voluptatem placeat aspernatur alias sit. Omnis, doloribus autem ea quasi, necessitatibus nam itaque fugit sequi pariatur sint distinctio, voluptatem culpa qui</p>\n    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad rem dicta laudantium doloremque ex dolores totam natus saepe labore animi praesentium officia error similique hic voluptas, enim quas sint tenetur.</p>\n    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt tenetur corporis molestiae doloremque repudiandae commodi, laboriosam voluptatibus labore deleniti facere unde molestias dolore quam expedita architecto ex quaerat culpa impedit.</p>\n   </hgroup>\n  </article>\n  <article class="completa">\n   <hgroup>\n    <h2>Que es el Manouche Jazz</h2>\n    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic inventore laudantium esse autem? Consequuntur ad alias rem officia sequi doloribus saepe. Tempora odit repellat magni debitis ut at iusto vero?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod incidunt nam, obcaecati harum ipsam rem autem sapiente veniam quidem optio non reiciendis dignissimos laboriosam nulla sequi, labore reprehenderit aliquam unde.</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad esse in doloremque voluptatem, aperiam ex, ut cupiditate, maiores ratione porro officia quae modi temporibus? Neque molestias doloremque quas sapiente. Omnis.</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis at error earum, tempora doloribus incidunt dolor ratione iure consequuntur neque reiciendis aliquid inventore cupiditate eius totam deserunt ut officia sit?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem amet voluptates corporis pariatur quae at repellat officia, corrupti porro assumenda voluptate dolor nam culpa eius ea? Nulla ducimus ipsam non?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam maxime sint modi voluptatum, labore iusto consequuntur amet veniam error iure eos nam assumenda vitae animi ipsum quos, possimus nesciunt quaerat?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia perferendis minima praesentium laborum accusantium rem voluptates velit exercitationem vitae officiis, corrupti itaque optio sed ad at hic temporibus qui ab?</p>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, illo molestias mollitia voluptatem nam repudiandae sint vero quis autem voluptatibus culpa accusamus iusto corporis nesciunt temporibus odit! Quos, inventore animi.</p>\n   </hgroup>\n   \n  </article>\n  <article class="dosTercios video-container">\n   <iframe src="https://www.youtube.com/embed/hQZmxkNyOtg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n  </article>\n  <article class="tercio">\n   <hgroup>\n    <h1>Exponentes del Manouche Jazz</h1>\n    <h3>Nuestras Influencias</h3>\n    <ul>\n     <li>Bireli Lagrene</li>\n     <li>Stochelo Rosemberg</li>\n     <li>Juan Perico de los Palotes</li>\n     <li></li>\n     <li></li>\n    </ul>\n   </hgroup>\n  </article>\n </section>\n</main>\n']);
 
 var _yoYo = require('yo-yo');
 
 var _yoYo2 = _interopRequireDefault(_yoYo);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function _taggedTemplateLiteral(strings, raw) {
+  return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
+}
 
 module.exports = (0, _yoYo2.default)(_templateObject);
 
-},{"yo-yo":15}]},{},[17]);
+},{"yo-yo":15}]},{},[20]);
