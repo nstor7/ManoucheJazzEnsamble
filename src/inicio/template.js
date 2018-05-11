@@ -2,12 +2,16 @@ import yo from 'yo-yo'
 
 module.exports = yo`
 <main>
- <img class="completa" src="imagenes/luis-david-manouche-jazz-ensamble-inicio-portada.jpg" alt="Foto de portada de la Página web del Luis David Manouche Jazz ensamble">
  <section>
-  <article class="dosTercios video-container">
+  <img class="completa portada" src="imagenes/luis-david-manouche-jazz-ensamble-inicio-portada.jpg" alt="Foto de portada de la Página web del Luis David Manouche Jazz ensamble">
+  <article class="transparente completa">
+  </article>
+ </section>
+ <section>
+  <article class="dosTercios video-container neutro">
    <iframe src="https://www.youtube.com/embed/hQZmxkNyOtg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </article>
-  <article class="tercio">
+  <article class="tercio obscuro">
    <hgroup>
     <h1>Luis David Manouche Jazz Ensamble</h1>
     <h3>Qué es?</h3>
@@ -16,7 +20,7 @@ module.exports = yo`
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt tenetur corporis molestiae doloremque repudiandae commodi, laboriosam voluptatibus labore deleniti facere unde molestias dolore quam expedita architecto ex quaerat culpa impedit.</p>
    </hgroup>
   </article>
-  <article class="completa">
+  <article class="completa claro">
    <hgroup>
     <h2>Que es el Manouche Jazz</h2>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic inventore laudantium esse autem? Consequuntur ad alias rem officia sequi doloribus saepe. Tempora odit repellat magni debitis ut at iusto vero?</p>
@@ -30,10 +34,10 @@ module.exports = yo`
    </hgroup>
    
   </article>
-  <article class="dosTercios video-container">
+  <article class="dosTercios video-container obscuro">
    <iframe src="https://www.youtube.com/embed/hQZmxkNyOtg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </article>
-  <article class="tercio">
+  <article class="tercio neutro">
    <hgroup>
     <h1>Exponentes del Manouche Jazz</h1>
     <h3>Nuestras Influencias</h3>
@@ -41,8 +45,6 @@ module.exports = yo`
      <li>Bireli Lagrene</li>
      <li>Stochelo Rosemberg</li>
      <li>Juan Perico de los Palotes</li>
-     <li></li>
-     <li></li>
     </ul>
    </hgroup>
   </article>

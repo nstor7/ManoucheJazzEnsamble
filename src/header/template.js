@@ -20,17 +20,17 @@ module.exports = yo`
    <i class="fa fa-bars" aria-hidden="true"></i>
  </a>
  <aside class="social-container">
-   <a href="" class="social">
-    <i class="fab fa-youtube"></i>
-   </a>
-   <a href="" class="social">
-    <i class="fab fa-facebook-f"></i>
-   </a>
-   <a href="" class="social">
-    <i class="fab fa-instagram"></i>
-   </a>
-   <a href="" class="social">
-    <i class="far fa-envelope"></i>
-   </a>
+  <a href="" class="social">
+   <i class="fab fa-youtube"></i>
+  </a>
+  <a href="" class="social">
+   <i class="fab fa-spotify"></i>
+  </a>
+  <a href="" class="social">
+   <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="" class="social">
+   <i class="fab fa-instagram"></i>
+  </a>
  </aside>
 </header>`

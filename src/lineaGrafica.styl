@@ -1,32 +1,41 @@
 //reset
-Body
+body
  margin: 0
  padding: 0
  display flex
+ justify-content: center
+ box-sizing: border-box
  #header-container
-  width: 16vw
+  width: 15vw
+  box-sizing: border-box
+  margin: 0
  #main-container
   width: 84vw
+  box-sizing: border-box
+  margin 0
 
 //Cajas
 main
  width: 84vw
- background: #363435
-section, article, picture
+.portada
+ position fixed
+ z-index: 1
+section, article
  display: flex
  color white
  box-sizing: border-box
+ flex-wrap: nowrap
 section
-  flex-wrap: wrap
+ flex-wrap: wrap
+ min-height: 40vw
 article
  padding: 1vw
+ z-index: 2
+ height 40vw
 .completa
  width: 84vw
 .tercio
  width: 28vw
- hgroup
-  width: 26vw
-  height 38vw
 .dosTercios
  width: 56vw
 .media
@@ -54,8 +63,18 @@ h3
  font-family: 'Julius Sans One', sans-serif
  font-size: 1vw
  color: #A6835A
-p 
+p, li
  font-family: 'Julius Sans One', sans-serif
  font-size: 0.9vw
  letter-spacing: 0.1vw
  line-height: 1.2vw
+//color de caja
+
+.obscuro
+ background: #24292D
+.claro
+ background: #2B3136
+.neutro
+ background: #363435
+.transparente
+ background:  rgba(49, 53, 57, 0.6)
